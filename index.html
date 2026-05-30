@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تولدت مبارک دخترم ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+overflow-x:hidden;
+text-align:center;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+h1{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+p{
+max-width:700px;
+line-height:2;
+}
+
+.slider{
+width:90%;
+max-width:500px;
+height:650px;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,255,255,.2);
+}
+
+.slider img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:none;
+}
+
+.slider img.active{
+display:block;
+}
+
+.btn{
+padding:15px 30px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+font-size:1rem;
+margin-top:20px;
+}
+
+.gift{
+font-size:120px;
+cursor:pointer;
+transition:.3s;
+}
+
+.gift:hover{
+transform:scale(1.1);
+}
+
+.hidden{
+display:none;
+}
+
+.audio-box{
+margin:15px;
+}
+
+.heart{
+position:fixed;
+pointer-events:none;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<section>
+
+<h1>🎂 تولدت مبارک دخترم ❤️</h1>
+
+<p>
+دومین تولدیه که خوشحالم کنارتم.
+و بعد از یک سال و نیم هنوزم وقتی پیام میدی
+یه لبخند رو صورتم میاد.
+</p>
+
+<br>
+
+<h2 id="daysCounter"></h2>
+
+</section>
+
+<section>
+
+<h2>📸 خاطره‌های قشنگمون</h2>
+
+<div class="slider">
+
+<img src="photo1.jpg" class="active">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="photo6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpg">
+<img src="photo9.jpg">
+<img src="photo10.jpg">
+
+</div>
+
+</section>
+
+<section>
+
+<h2>🎁 هدیه مخفی</h2>
+
+<p>
+روی کادو بزن...
+</p>
+
+<div class="gift" onclick="openGift()">
+🎁
+</div>
+
+<div id="giftContent" class="hidden">
+
+<h2>💌 یه پیام برای دخترم</h2>
+
+<p>
+ممنون که توی این یک سال و نیم کنارم بودی.
+
+ممنون بابت همه خنده‌ها،
+همه خاطره‌ها،
+همه لحظه‌هایی که بهترشون کردی.
+
+تولدت مبارک ❤️
+</p>
+
+<div class="audio-box">
+<audio controls>
+<source src="voice1.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="audio-box">
+<audio controls>
+<source src="voice2.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="audio-box">
+<audio controls>
+<source src="voice3.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="audio-box">
+<audio controls>
+<source src="voice4.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>❤️ آخرین دکمه</h2>
+
+<button class="btn" onclick="heartExplosion()">
+دوستت دارم
+</button>
+
+</section>
+
+<script>
+
+/* تعداد روزهای رابطه */
+
+const startDate = new Date("2024-11-05");
+
+const today = new Date();
+
+const diff = today - startDate;
+
+const days = Math.floor(diff / (1000*60*60*24));
+
+document.getElementById("daysCounter").innerHTML =
+"⏳ " + days + " روز کنار هم";
+
+/* اسلایدشو */
+
+let slides=document.querySelectorAll(".slider img");
+let current=0;
+
+setInterval(()=>{
+
+slides[current].classList.remove("active");
+
+current=(current+1)%slides.length;
+
+slides[current].classList.add("active");
+
+},2500);
+
+/* باز شدن کادو */
+
+function openGift(){
+
+document.getElementById("giftContent")
+.classList.remove("hidden");
+
+document.querySelector(".gift").innerHTML="🎉";
+
+}
+
+/* انفجار قلب */
+
+function heartExplosion(){
+
+for(let i=0;i<150;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.className="heart";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=
+(15+Math.random()*40)+"px";
+
+heart.style.animationDuration=
+(2+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
